@@ -10,7 +10,58 @@
     <title>Salary Calculator - Joshua Vedane</title>
 </head>
 <body class="container">
-    <h1>Hello Project!</h1>
+    <header class="header">
+        <h1>Hello Project!</h1>
+    </header>
+    <div>
+        <h1>Add Employee</h1>
+    </div>
+    <div class="row">
+        <div class="form-floating col ">
+            <input type="text" placeholder="First Name" id="firstNameIn" class="form-control" />
+            <label for="lastNameIn" class="form-label ">First Name</label>
+        </div>
+        <div class="form-floating col ">
+            <input type="text" placeholder="Last Name" id="lastNameIn" class="form-control" />
+            <label for="lastNameIn" class="form-label">Last Name</label>
+        </div>
+        <div class="form-floating col ">
+            <input type="text" placeholder="ID" id="idIn" class="form-control" />
+            <label for="idIn" class="form-label">ID</label>
+        </div>
+        <div class="form-floating col ">
+            <input type="text" placeholder="Title" id="titleIn" class="form-control" />
+            <label for="titleIn" class="form-label">Title</label>
+        </div>
+        <div class="form-floating col">
+            <input type="number" placeholder="Annual Salary" id="salaryIn" class="form-control" />
+            <label for="salaryIn" class="form-label"> Annual Salary </label>
+        </div>
+        <button class="btn btn-success col" id = "submit" type="submit">Submit</button>
+        
+    </div>
     
+    <div>
+        <h1>Employees</h1>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Annual Salary</th>
+                <th></th>
+            </tr>
+        </thead>
+
+    </table>
+    
+
+
+
+
 </body>
 </html>
