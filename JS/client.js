@@ -3,8 +3,8 @@ console.log('JS');
 //array to hold input field info
 let employees = [];
 // store the result of calculateTotalMonthly here for DOM rendering. 
-let monthlyCost = 0;
 let annualTotalCost = 0;
+let monthlyCost = 0;
 
 $(document).ready(handleReady);
 
@@ -18,7 +18,7 @@ $(document).ready(handleReady);
 function handleReady() {
     console.log('JQ');
     renderToDom();
-
+    
     //click listeners
     $('#addEmployee').on('click', handleAddEmployeeClick);
 }
@@ -35,37 +35,32 @@ function renderToDom() {
         <td>${employee.lastName}</td>
         <td>${employee.id}</td>
         <td>${employee.title}</td>
-        <td>${employee.annualSalary}</td>
+        <td>$${employee.annualSalary}</td>
         </tr>`);
 
         //append employee info to the DOM
         $('#employeeListOut').append(employeeRow);
         console.log('inRenderToDom');
 
-        //render the total monthly salary of all employees. 
-        //call calculateTotalMonthly. It will grab from the array. We'll get into the current for of loop to do this. 
-
-        // let monthlyCostOut = calculateTotalMonthly(employee);
-        // $('.totalOut').text(monthlyCostOut);
-
-        //try this once more. 
-        let monthlyCostOut = annualTotalCost/12;
+        //calculate monthlyCost
+        monthlyCost = annualTotalCost/12;
+        //check if over budget
+        checkOverBudget();
+        //format monthlyCost for output.
+        let roundMonthlyCost = Math.round(monthlyCost);
+        let monthlyCostOut = roundMonthlyCost.toLocaleString();
         console.log(`this should be monthly cost: ` ,monthlyCostOut);
-        $('.totalOut').text(monthlyCostOut)
-        
+        //render Monthly Cost to DOM
+        $('.totalOut').text(monthlyCostOut);
     }
 }
-//calculate total monthly salary. given the employee from for..of loop in renderToDom. will return monthlyCost variable. 
 
-//because we're grabbing from the array, it's doubling up. gonna try doing this by addition assignment of global variable annualTotalCost
-// function calculateTotalMonthly (employee) {
-//     let monthlyEmployeeSalary = Number(annualTotalCost) / 12;
-//     return monthlyCost += parseInt(monthlyEmployeeSalary);
-    
-    
-
-// }
-
+//check if over budget
+function checkOverBudget(){
+    if(monthlyCost >= 20000){
+        $('.totalOut').toggleClass('over-budget');
+    }
+}
 
 
 //Submit button handler
