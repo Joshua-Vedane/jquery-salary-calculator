@@ -2,6 +2,9 @@ console.log('JS');
 
 //array to hold input field info
 let employees = [];
+// store the result of calculateTotalMonthly here for DOM rendering. 
+let monthlyCost = 0;
+let annualTotalCost = 0;
 
 $(document).ready(handleReady);
 
@@ -22,7 +25,9 @@ function handleReady() {
 
 //renderToDom
 function renderToDom() {
+    //no duplicate employees
     $('#employeeListOut').empty();
+    //input field rendering
     for (let employee of employees) {
         //create the employee table row
         let employeeRow = $(`<tr>
@@ -33,13 +38,33 @@ function renderToDom() {
         <td>${employee.annualSalary}</td>
         </tr>`);
 
-        //append to the DOM
+        //append employee info to the DOM
         $('#employeeListOut').append(employeeRow);
         console.log('inRenderToDom');
+
+        //render the total monthly salary of all employees. 
+        //call calculateTotalMonthly. It will grab from the array. We'll get into the current for of loop to do this. 
+
+        // let monthlyCostOut = calculateTotalMonthly(employee);
+        // $('.totalOut').text(monthlyCostOut);
+
+        //try this once more. 
+        let monthlyCostOut = annualTotalCost/12;
+        console.log(`this should be monthly cost: ` ,monthlyCostOut);
+        $('.totalOut').text(monthlyCostOut)
+        
     }
 }
+//calculate total monthly salary. given the employee from for..of loop in renderToDom. will return monthlyCost variable. 
 
+//because we're grabbing from the array, it's doubling up. gonna try doing this by addition assignment of global variable annualTotalCost
+// function calculateTotalMonthly (employee) {
+//     let monthlyEmployeeSalary = Number(annualTotalCost) / 12;
+//     return monthlyCost += parseInt(monthlyEmployeeSalary);
+    
+    
 
+// }
 
 
 
@@ -53,8 +78,13 @@ function handleAddEmployeeClick(){
         title : $('#titleIn').val(),
         annualSalary : $('#annualSalaryIn').val()
     };
+    //store the annual salary of each employee in variable for use in calculating total monthly cost later. 
+    annualTotalCost += Number(newEmployee.annualSalary);
+    console.log(`testing:` , parseInt(annualTotalCost));
+
     //make sure we get the right stuff
     console.log(newEmployee);
+    //newEmployee now in employees array. 
     employees.push(newEmployee);
     //make sure it pushed newEmployee to array
     console.log(employees);
@@ -63,5 +93,13 @@ function handleAddEmployeeClick(){
     renderToDom();
 
     //we also want to clear the input fields. Let's make a new function that does that and it will be called here. 
-    
+    clearFields();
+}
+
+function clearFields(){
+    $('#firstNameIn').val('');
+    $('#lastNameIn').val('');
+    $('#idIn').val('');
+    $('#titleIn').val('');
+    $('#annualSalaryIn').val('');
 }
