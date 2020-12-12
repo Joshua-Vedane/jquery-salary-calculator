@@ -34,10 +34,10 @@
             <label for="titleIn" class="form-label">Title</label>
         </div>
         <div class="form-floating col">
-            <input type="number" placeholder="Annual Salary" id="salaryIn" class="form-control" />
-            <label for="salaryIn" class="form-label"> Annual Salary </label>
+            <input type="number" placeholder="Annual Salary" id="annualSalaryIn" class="form-control" />
+            <label for="annualSalaryIn" class="form-label"> Annual Salary </label>
         </div>
-        <button class="btn btn-success col" id = "submit" type="submit">Submit</button>
+        <button class="btn btn-success col" id = "addEmployee">Submit</button>
         
     </div>
     
@@ -45,20 +45,26 @@
         <h1>Employees</h1>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
         <thead>
-            <tr>
+            <tr class="table-info">
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>ID</th>
                 <th>Title</th>
                 <th>Annual Salary</th>
-                <th></th>
+                <!-- <th>deletebutton</th> -->
             </tr>
         </thead>
+        <tbody id="employeeListOut">
+
+        </tbody>
 
     </table>
     
+    <div>
+        <h2>Total Monthly: $ <span class="totalOut"></span></h2>
+    </div>
 
 
 
