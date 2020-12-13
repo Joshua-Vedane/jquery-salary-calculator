@@ -1,7 +1,37 @@
-h1 {
-    color: green;
+.container {
+    background-color: 	#D8DAD9;
 }
 
+
+.header {
+    background-color: #9BCDE4;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.input-field {
+    background-color: #585958;
+}
+.input-field > h1 {
+    color: #D8DAD9;
+}
+
+.btn-light:hover {
+    color: #000;
+    background-color: #f9fafb;
+    border-color: #f9fafb;
+  }
+
 .over-budget {
-    background-color: red;
+    background-color: #DF2426;
+}
+
+
+td {
+    text-align: center;
+}
+
+
+.tableHead {
+    background-color: #9BCDE4;
 }
